@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const getAllRes = async(setRespostas, setContagem)=>{
     axios
-    .get('/api/usuarios')
+    .get('https://parceiros-api-01.vercel.app/api/usuarios')
     .then(({data})=>{
         console.log('data -->', data)
         setRespostas(data)   
@@ -14,7 +14,7 @@ const getAllRes = async(setRespostas, setContagem)=>{
 
 const addForm = async(formData, setFormData, setRespostas,setContagem)=>{
     try {
-        const response = await axios.post('/api/usuarios', formData,{
+        const response = await axios.post('https://parceiros-api-01.vercel.app/api/usuarios', formData,{
             headers:{
                 'Content-Type':'application/json'
             }
