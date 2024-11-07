@@ -4,6 +4,7 @@ import Form from './components/Form'
 import Respotas from './components/Respotas'
 import React, {useState} from 'react'
 
+
 function App() {
   const [respostas, setRespostas] = useState([]);  
   const [contagem, setContagem] = useState({
@@ -11,8 +12,8 @@ function App() {
     NAO:0
 });
 
-  return (
-    <>
+return (
+    <>     
     <Form setRespostas={setRespostas} setContagem={setContagem}/>  
     <Respotas respostas={respostas} setRespostas={setRespostas} setContagem={setContagem} />  
     <Contagem contagem={contagem}/>

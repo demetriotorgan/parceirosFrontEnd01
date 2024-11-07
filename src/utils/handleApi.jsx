@@ -12,7 +12,7 @@ const getAllRes = async(setRespostas, setContagem)=>{
 
 }
 
-const addForm = async(formData, setFormData, setRespostas,setContagem)=>{
+const addForm = async(formData, setFormData, setRespostas,setContagem,notify,notifyError)=>{
     try {
         const response = await axios.post('https://parceiros-api-01.vercel.app/api/usuarios', formData,{
             headers:{
@@ -21,17 +21,17 @@ const addForm = async(formData, setFormData, setRespostas,setContagem)=>{
         })
         console.log('Cadastro enviado com sucesso ', response.data);
         console.log(response.data.status)
-        alert('Voto Registrado')
+        notify();
         setFormData({
             name:'',
             email:'',
             voto:''
-        })
+        })        
         getAllRes(setRespostas,setContagem);
     } catch (error) {
         console.error('Erro ao cadastrar voto', error.status);
         if(error.status === 400){
-            alert('Email já cadastrado')
+            notifyError();
         }
     }        
 }

@@ -1,6 +1,8 @@
 import React from 'react'
 import {useState} from 'react'
 import { addForm } from '../utils/handleApi';
+import {Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Form = ({setRespostas, setContagem}) => {
     const [formData, setFormData] = useState({
@@ -11,7 +13,7 @@ const Form = ({setRespostas, setContagem}) => {
 
 const handleSubmit = (e)=>{
         e.preventDefault(); 
-        addForm(formData, setFormData,setRespostas, setContagem);
+        addForm(formData, setFormData,setRespostas, setContagem,notify,notifyError);
 }
 
 const handleChange = (e) =>{
@@ -22,11 +24,47 @@ const handleChange = (e) =>{
     })
   }
   
-      
+  const notify = () => toast.success('Seu voto foi cadastrado com sucesso!', {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    transition: Bounce,
+    });
+
+   const notifyError = ()=> toast.error('E-mail já cadastrado!!!', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+      });
+
   return (
-    <>
+    <>    
     <h1>Cadastro</h1>
     <form onSubmit={handleSubmit}>
+    <ToastContainer
+    position="top-center"
+    autoClose={5000}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+    theme="dark"
+    transition={Bounce}
+    />
       <label>
         Nome:
         <input

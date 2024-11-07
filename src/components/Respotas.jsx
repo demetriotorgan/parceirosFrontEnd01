@@ -9,7 +9,7 @@ useEffect(()=>{
 
   return (
     <>
-    <h1>Respotas</h1>
+    <h1>Respostas</h1>
     <ul>
     {respostas && respostas.map((item, index)=>(
         <li key={index}>
