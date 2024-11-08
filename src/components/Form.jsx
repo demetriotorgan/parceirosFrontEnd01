@@ -3,6 +3,7 @@ import {useState} from 'react'
 import { addForm } from '../utils/handleApi';
 import {Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './form.css';
 
 const Form = ({setRespostas, setContagem}) => {
     const [formData, setFormData] = useState({
@@ -50,7 +51,7 @@ const handleChange = (e) =>{
 
   return (
     <>    
-    <h1>Cadastro</h1>
+    <div className='form-container'>
     <form onSubmit={handleSubmit}>
     <ToastContainer
     position="top-center"
@@ -65,6 +66,8 @@ const handleChange = (e) =>{
     theme="dark"
     transition={Bounce}
     />
+    <h2>Vote aqui!</h2>
+    {/* ----------------INPUTS-------------- */}
       <label>
         Nome:
         <input
@@ -73,8 +76,7 @@ const handleChange = (e) =>{
         value={formData.name}
         onChange={handleChange}
         />
-      </label>
-      <br/>
+      </label>      
       <label>
         Email:
         <input
@@ -84,8 +86,9 @@ const handleChange = (e) =>{
         onChange={handleChange}
         required  
         />
-      </label>
-      <br />
+      </label>      
+      {/* ----------------RADIO BUTTON-------------- */}
+      <div className='radio-group'>
       <label>
         SIM
         <input 
@@ -108,10 +111,11 @@ const handleChange = (e) =>{
         required
         />
       </label>
-      <br />
+      </div>      
+      {/* ----------------BUTTON-------------- */}
       <button type='submit'>Enviar</button>
     </form>
-    <ul></ul>
+    </div>        
     </>
   )
 }
